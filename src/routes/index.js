@@ -12,8 +12,8 @@ import MembershipForm from '../pages/Membership/layouts/form';
 
 import SignIn from '../pages/SignIn/index';
 
-import Student from '../pages/Student/layouts/index';
-import StudentForm from '../pages/Student/layouts/form';
+import Student from '../pages/Student/List/index';
+import StudentForm from '../pages/Student/Form/form';
 
 export default function Routes() {
   return (

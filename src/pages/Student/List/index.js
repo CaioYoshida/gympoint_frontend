@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { MdAccountBox, MdSearch } from 'react-icons/md';
 
-import { Container, Menu, SearchBox, List } from '../styles';
+import { Container, Menu, SearchBox, List } from './styles';
 
 export default function Student() {
   return (
@@ -11,7 +11,7 @@ export default function Student() {
       <div>
         <span>Gerenciamento de Alunos</span>
         <Menu>
-          <Link to="/students">
+          <Link to="/students/add">
             <MdAccountBox size={24} color="#FFF" />
             CADASTRAR
           </Link>
