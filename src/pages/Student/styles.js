@@ -60,7 +60,7 @@ export const SearchBox = styled.div`
 
 export const List = styled.table`
   margin-top: 20px;
-  padding: 20px;
+  padding: 30px;
   width: 100%;
   background: #fff;
   border-radius: 4px;
