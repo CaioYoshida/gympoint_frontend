@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { MdPlaylistAdd, MdCheckCircle, MdRemoveCircle } from 'react-icons/md';
 
-import { Container, Menu, List } from './styles';
+import { Container, Menu, List } from '../styles';
 
 export default function Enrollment() {
   return (
