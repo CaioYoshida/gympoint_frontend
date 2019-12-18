@@ -2,8 +2,8 @@ import React from 'react';
 import { Switch } from 'react-router-dom';
 import Route from './Route';
 
-import Enrollment from '../pages/Enrollment/layouts/index';
-import EnrollmentForm from '../pages/Enrollment/layouts/form';
+import Enrollment from '../pages/Enrollment/List/index';
+import EnrollmentForm from '../pages/Enrollment/Form/form';
 
 import Help_Order from '../pages/Help_Order/index';
 
