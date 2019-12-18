@@ -13,8 +13,8 @@ export default function Header() {
           <div>
             <Link to="/students">ALUNOS</Link>
             <Link to="/memberships">PLANOS</Link>
-            <Link to="enrollments">MATRICULAS</Link>
-            <Link to="help_orders">PEDIDOS DE AUXILIO</Link>
+            <Link to="/enrollments">MATRICULAS</Link>
+            <Link to="/help_orders">PEDIDOS DE AUXILIO</Link>
           </div>
         </Menu>
         <Profile>

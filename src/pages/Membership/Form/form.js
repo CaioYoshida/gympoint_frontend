@@ -30,15 +30,15 @@ export default function MembershipForm() {
         <label htmlFor="title">TITULO DO PLANO</label>
         <Input name="title" type="text" />
         <div>
-          <div>
+          <div style={{ marginRight: '10px' }}>
             <label htmlFor="duration">DURAÇÃO (em meses)</label>
             <Input name="duration" type="number" />
           </div>
-          <div>
+          <div style={{ marginLeft: '10px', marginRight: '10px' }}>
             <label htmlFor="price">PREÇO MENSAL</label>
             <Input name="price" type="number" />
           </div>
-          <div>
+          <div style={{ marginLeft: '10px' }}>
             <label htmlFor="price">PREÇO TOTAL</label>
             <TotalPrice />
           </div>

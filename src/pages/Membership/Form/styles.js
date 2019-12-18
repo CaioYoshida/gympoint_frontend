@@ -46,7 +46,8 @@ export const Wrapper = styled.div`
 
     div {
       div {
-        width: 260px;
+        max-width: 260px;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
