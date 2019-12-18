@@ -6,13 +6,18 @@ export const Wrapper = styled.div`
   margin-top: 15px;
   padding: 30px;
 
+  span {
+    color: red;
+    margin-bottom: 10px;
+  }
+
   div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
-    span {
+    h1 {
       font-size: 24px;
       font-weight: bold;
     }

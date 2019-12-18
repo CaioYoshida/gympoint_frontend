@@ -10,7 +10,9 @@ import { Wrapper, MenuForm, TotalPrice, EndDate } from './styles';
 const schema = Yup.object().shape({
   name: Yup.string().required('O aluno é obrigatório'),
   membership: Yup.string().required('O plano é obrigatório'),
-  start_date: Yup.date().required('A data de início é obrigatório'),
+  start_date: Yup.date()
+    .typeError('Data inválida')
+    .required('A data de início é obrigatório'),
 });
 
 export default function MembershipForm() {
@@ -21,7 +23,7 @@ export default function MembershipForm() {
   return (
     <Wrapper>
       <div>
-        <span>Cadastro de Matrícula</span>
+        <h1>Cadastro de Matrícula</h1>
         <MenuForm>
           <Link to="/memberships">
             <MdArrowBack size={24} color="#FFF" />
@@ -41,7 +43,7 @@ export default function MembershipForm() {
             <label htmlFor="membership">PLANO</label>
             <Input
               name="membership"
-              type="number"
+              type="text"
               placeholder="Selecione o plano"
             />
           </div>
