@@ -55,6 +55,18 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const TotalPrice = styled.div`
+  width: 100%;
+  margin-bottom: 20px;
+  height: 45px;
+  padding: 0 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  color: #999;
+  background: #eee;
+  font-size: 16px;
+`;
+
 export const MenuForm = styled.div`
   a {
     text-decoration: none;

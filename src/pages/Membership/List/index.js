@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { MdPlaylistAdd } from 'react-icons/md';
 
-import { Container, Menu, List } from '../styles';
+import { Container, Menu, List } from './styles';
 
 export default function Membership() {
   return (
@@ -11,7 +11,7 @@ export default function Membership() {
       <div>
         <span>Gerenciamento de Planos</span>
         <Menu>
-          <Link to="/students">
+          <Link to="/memberships/add">
             <MdPlaylistAdd size={24} color="#FFF" />
             CADASTRAR
           </Link>

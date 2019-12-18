@@ -7,8 +7,8 @@ import EnrollmentForm from '../pages/Enrollment/layouts/form';
 
 import Help_Order from '../pages/Help_Order/index';
 
-import Membership from '../pages/Membership/layouts/index';
-import MembershipForm from '../pages/Membership/layouts/form';
+import Membership from '../pages/Membership/List/index';
+import MembershipForm from '../pages/Membership/Form/form';
 
 import SignIn from '../pages/SignIn/index';
 
