@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   border-radius: 4px;
-  height: 448px;
+  height: 100%;
+  max-height: 450px;
   width: 360px;
   background: #fff;
   box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -11,6 +12,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  img {
+    margin-top: 20px;
+  }
 
   form {
     display: flex;
@@ -44,6 +49,12 @@ export const Container = styled.div`
       color: #fff;
       font-weight: bold;
       font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    span {
+      color: red;
+      margin-bottom: 10px;
     }
   }
 `;

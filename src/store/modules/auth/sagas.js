@@ -1,4 +1,6 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
+
 import history from '~/services/history';
 import api from '~/services/api';
 
@@ -19,7 +21,8 @@ export function* signIn({ payload }) {
 
     history.push('/enrollments');
   } catch (err) {
-    console.tron.error('Erro');
+    console.tron.error('erro');
+    toast.error('E-mail ou senha inválidos');
   }
 }
 
