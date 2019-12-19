@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import store from '~/store';
+import { store } from '~/store';
 
 import DefaultLayout from '~/pages/_laytouts/default/index';
 import AuthLayout from '~/pages/_laytouts/auth/index';
