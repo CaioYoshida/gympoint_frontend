@@ -1,10 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import logo from '~/assets/logo.png';
 import { Container, Menu, Profile } from './styles';
 
 export default function Header() {
+  const profile = useSelector(state => state.user.profile);
+
   return (
     <Container>
       <div>
@@ -18,7 +21,7 @@ export default function Header() {
           </div>
         </Menu>
         <Profile>
-          <strong>Caio Yoshida</strong>
+          <strong>{profile.name}</strong>
           <button type="button">sair do sistema</button>
         </Profile>
       </div>
