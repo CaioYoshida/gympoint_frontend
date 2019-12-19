@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { MdAccountBox, MdSearch } from 'react-icons/md';
 
+import api from '~/services/api';
+
 import { Container, Menu, SearchBox, List } from './styles';
 
 export default function Student() {
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    async function loadStudents() {
+      const response = await api.get('students');
+
+      const { data } = response;
+
+      setStudents(data);
+    }
+    loadStudents();
+  }, [students]);
+
+  async function handleDelete(id) {
+    await api.delete(`students/${id}`);
+  }
+
   return (
     <Container>
       <div>
@@ -28,45 +47,25 @@ export default function Student() {
           <th id="age">IDADE</th>
           <th />
         </tr>
-        <tr>
-          <td>Caio Yoshida</td>
-          <td>caio.yoshida@yahoo.com</td>
-          <td className="age_td">28</td>
-          <td className="options">
-            <button type="button" className="editar">
-              editar
-            </button>
-            <button type="button" className="apagar">
-              apagar
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>Juliana Yoshida</td>
-          <td>juliana.yoshida@yahoo.com</td>
-          <td className="age_td">28</td>
-          <td className="options">
-            <button type="button" className="editar">
-              editar
-            </button>
-            <button type="button" className="apagar">
-              apagar
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>Gabrielle Yoshida</td>
-          <td>gabrielle.yoshida@yahoo.com</td>
-          <td className="age_td">22</td>
-          <td className="options">
-            <button type="button" className="editar">
-              editar
-            </button>
-            <button type="button" className="apagar">
-              apagar
-            </button>
-          </td>
-        </tr>
+        {students.map(student => (
+          <tr>
+            <td>{student.name}</td>
+            <td>{student.email}</td>
+            <td className="age_td">{student.age}</td>
+            <td className="options">
+              <button type="button" className="editar">
+                editar
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDelete(student.id)}
+                className="apagar"
+              >
+                apagar
+              </button>
+            </td>
+          </tr>
+        ))}
       </List>
     </Container>
   );
