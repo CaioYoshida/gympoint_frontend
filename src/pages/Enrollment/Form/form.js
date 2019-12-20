@@ -25,7 +25,7 @@ export default function MembershipForm() {
       <div>
         <h1>Cadastro de Matrícula</h1>
         <MenuForm>
-          <Link to="/memberships">
+          <Link to="/enrollments">
             <MdArrowBack size={24} color="#FFF" />
             VOLTAR
           </Link>
