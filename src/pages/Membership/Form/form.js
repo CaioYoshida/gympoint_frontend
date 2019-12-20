@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
 import { MdArrowBack, MdSave } from 'react-icons/md';
+
+import api from '~/services/api';
+
+import { formatPrice } from '~/util/format';
 
 import { Wrapper, MenuForm, TotalPrice } from './styles';
 
@@ -20,10 +25,66 @@ const schema = Yup.object().shape({
     .required('Informação Obrigatória'),
 });
 
-export default function MembershipForm() {
-  function handleSubmit(data) {
-    console.tron.log(data);
+export default function MembershipForm({ match }) {
+  const { id } = match.params;
+
+  const [title, setTitle] = useState();
+  const [duration, setDuration] = useState();
+  const [price, setPrice] = useState();
+
+  useEffect(() => {
+    async function loadMemberships() {
+      if (id) {
+        const response = await api.get(`memberships/${id}`);
+
+        const { data } = response;
+
+        console.tron.log(data);
+
+        setTitle(data.title);
+        setDuration(data.duration);
+        setPrice(data.price);
+      }
+    }
+    loadMemberships();
+  }, [id]);
+
+  async function handleSubmit() {
+    if (id) {
+      try {
+        await api.put(`memberships/${id}`, {
+          title,
+          duration,
+          price,
+        });
+
+        toast.success('Registro atualizado com sucesso');
+      } catch (err) {
+        toast.error('Falha ao atualizar os dados');
+      }
+    } else {
+      try {
+        await api.post('memberships', {
+          title,
+          duration,
+          price,
+        });
+
+        setTitle('');
+        setDuration('');
+        setPrice('');
+
+        toast.success('Registro incluído com sucesso');
+      } catch (err) {
+        toast.error('Falha ao criar registro');
+      }
+    }
   }
+
+  const totalPrice = useMemo(() => formatPrice(duration * price), [
+    duration,
+    price,
+  ]);
 
   return (
     <Wrapper>
@@ -42,19 +103,37 @@ export default function MembershipForm() {
       </div>
       <Form id="my-form" schema={schema} onSubmit={handleSubmit}>
         <label htmlFor="title">TITULO DO PLANO</label>
-        <Input name="title" type="text" />
+        <Input
+          name="title"
+          type="text"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        />
         <div>
           <div style={{ marginRight: '10px' }}>
             <label htmlFor="duration">DURAÇÃO (em meses)</label>
-            <Input name="duration" type="number" />
+            <Input
+              name="duration"
+              type="number"
+              value={duration}
+              onChange={e => setDuration(e.target.value)}
+            />
           </div>
           <div style={{ marginLeft: '10px', marginRight: '10px' }}>
             <label htmlFor="price">PREÇO MENSAL</label>
-            <Input name="price" type="number" step="0.01" />
+            <Input
+              name="price"
+              type="number"
+              step="0.01"
+              value={price}
+              onChange={e => setPrice(e.target.value)}
+            />
           </div>
           <div style={{ marginLeft: '10px' }}>
             <label htmlFor="price">PREÇO TOTAL</label>
-            <TotalPrice />
+            <TotalPrice>
+              <span>{totalPrice}</span>
+            </TotalPrice>
           </div>
         </div>
       </Form>

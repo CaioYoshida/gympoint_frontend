@@ -68,9 +68,13 @@ export const TotalPrice = styled.div`
   padding: 0 10px;
   border-radius: 4px;
   border: 1px solid #ddd;
-  color: #999;
   background: #eee;
   font-size: 16px;
+
+  span {
+    color: #999;
+    padding-top: 10px;
+  }
 `;
 
 export const MenuForm = styled.div`
