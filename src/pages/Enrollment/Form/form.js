@@ -116,15 +116,13 @@ export default function MembershipForm({ match }) {
       }
     } else {
       try {
-        await api.put('enrollments', {
+        await api.post('enrollments', {
           student_id,
           membership_id,
           start_date,
         });
 
         setStudent_id('');
-        setMembership_id('');
-        setStart_date('');
 
         toast.success('Matricula registrada com sucesso');
       } catch (err) {
