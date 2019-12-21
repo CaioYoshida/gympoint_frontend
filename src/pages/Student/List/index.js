@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 
 import { MdAccountBox, MdSearch } from 'react-icons/md';
@@ -22,8 +23,26 @@ export default function Student() {
     loadStudents();
   }, [students]);
 
-  async function handleDelete(id) {
+  async function remove(id) {
     await api.delete(`students/${id}`);
+  }
+
+  async function handleDelete(id) {
+    Swal.fire({
+      title: 'Você tem certeza?',
+      text: 'Esta ação não será reversível',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Deletar',
+      cancelButtonText: 'Cancelar',
+    }).then(result => {
+      if (result.value) {
+        remove(id);
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+      }
+    });
   }
 
   return (

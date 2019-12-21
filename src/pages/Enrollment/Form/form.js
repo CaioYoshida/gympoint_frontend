@@ -104,7 +104,7 @@ export default function MembershipForm({ match }) {
   async function handleSubmit() {
     if (id) {
       try {
-        await api.put('enrollments', {
+        await api.put(`enrollments/${id}`, {
           student_id,
           membership_id,
           start_date,
