@@ -38,15 +38,16 @@ export const Wrapper = styled.div`
       margin-bottom: 10px;
     }
 
-    input {
-      width: 100%;
-      margin-bottom: 20px;
-      height: 45px;
-      padding: 0 10px;
-      border-radius: 4px;
+    select {
       border: 1px solid #ddd;
+      border-radius: 4px;
+      height: 45px;
+      width: 100%;
+
       color: #999;
       font-size: 16px;
+
+      margin-bottom: 20px;
     }
 
     div {
@@ -56,9 +57,55 @@ export const Wrapper = styled.div`
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+
+        input {
+          width: 100%;
+          margin-bottom: 20px;
+          height: 45px;
+          padding: 0 10px;
+          border-radius: 4px;
+          border: 1px solid #ddd;
+          color: #999;
+          font-size: 16px;
+        }
       }
     }
   }
+`;
+
+export const MembershipSelect = styled.div`
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 20px;
+
+  button {
+    border: none;
+    background: none;
+  }
+`;
+
+export const MembershipInput = styled.input`
+  width: 100%;
+  color: #999;
+  border: none;
+  font-size: 16px;
+`;
+
+export const DateInput = styled.input`
+  width: 100%;
+  margin-bottom: 20px;
+  height: 45px;
+  padding: 0 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  color: #999;
+  font-size: 16px;
 `;
 
 export const TotalPrice = styled.div`
@@ -71,6 +118,11 @@ export const TotalPrice = styled.div`
   color: #999;
   background: #eee;
   font-size: 16px;
+
+  span {
+    color: #999;
+    padding-top: 10px;
+  }
 `;
 
 export const EndDate = styled.div`
@@ -83,6 +135,11 @@ export const EndDate = styled.div`
   color: #999;
   background: #eee;
   font-size: 16px;
+
+  span {
+    color: #999;
+    padding-top: 10px;
+  }
 `;
 
 export const MenuForm = styled.div`
@@ -107,7 +164,6 @@ export const MenuForm = styled.div`
 
   button {
     padding: 6px 10px;
-    margin-right: 16px;
     background: #ee4d64;
     border: none;
     border-radius: 4px;

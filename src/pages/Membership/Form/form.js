@@ -29,8 +29,8 @@ export default function MembershipForm({ match }) {
   const { id } = match.params;
 
   const [title, setTitle] = useState();
-  const [duration, setDuration] = useState();
-  const [price, setPrice] = useState();
+  const [duration, setDuration] = useState(0);
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     async function loadMemberships() {

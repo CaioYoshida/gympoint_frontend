@@ -57,7 +57,7 @@ export default function Enrollment() {
           <th />
         </tr>
         {enrollments.map(enrollment => (
-          <tr>
+          <tr key={enrollment.id}>
             <td>{enrollment.student.name}</td>
             <td className="center">{enrollment.membership.title}</td>
             <td className="center">{enrollment.startAt}</td>
