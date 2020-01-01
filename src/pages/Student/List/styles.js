@@ -49,8 +49,13 @@ export const SearchBox = styled.div`
   border-radius: 4px;
   border: 1px solid #ddd;
 
-  svg {
-    margin-right: 5px;
+  button {
+    border: none;
+    background: none;
+
+    svg {
+      margin-right: 5px;
+    }
   }
 
   input {

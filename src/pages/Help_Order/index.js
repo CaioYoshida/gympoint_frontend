@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import api from '~/services/api';
 
 import { Container, List } from './styles';
+import AnswerBox from '~/components/AnswerBox';
 
 export default function Help_Order() {
+  const [helpOrders, setHelpOrders] = useState([]);
+
+  useEffect(() => {
+    async function loadHelpOrders() {
+      const response = await api.get('help-orders');
+
+      setHelpOrders(response.data);
+    }
+    loadHelpOrders();
+  }, []);
+
+  async function handleAnswer() {
+    console.tron.log('Responder pergunta');
+  }
+
   return (
     <Container>
       <div>
@@ -13,25 +31,18 @@ export default function Help_Order() {
           <th>ALUNO</th>
           <th />
         </tr>
-        <tr>
-          <td>Caio Yoshida</td>
-          <td className="answer">
-            <button type="button">responder</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Juliana Yoshida</td>
-          <td className="answer">
-            <button type="button">responder</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Gabrielle Yoshida</td>
-          <td className="answer">
-            <button type="button">responder</button>
-          </td>
-        </tr>
+        {helpOrders.map(helpOrder => (
+          <tr>
+            <td>{helpOrder.student.name}</td>
+            <td className="answer">
+              <button type="button" onClick={() => handleAnswer()}>
+                responder
+              </button>
+            </td>
+          </tr>
+        ))}
       </List>
+      <AnswerBox />
     </Container>
   );
 }

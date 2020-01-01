@@ -31,7 +31,7 @@ export default function Enrollment() {
       setEnrollments(data);
     }
     loadEnrollments();
-  }, [enrollments]);
+  }, []);
 
   async function remove(id) {
     await api.delete(`enrollments/${id}`);

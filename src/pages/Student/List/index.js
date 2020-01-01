@@ -11,6 +11,7 @@ import { Container, Menu, SearchBox, List } from './styles';
 
 export default function Student() {
   const [students, setStudents] = useState([]);
+  const [searchData, setSearchData] = useState('');
 
   useEffect(() => {
     async function loadStudents() {
@@ -21,7 +22,19 @@ export default function Student() {
       setStudents(data);
     }
     loadStudents();
-  }, [students]);
+  }, []);
+
+  async function handleSearch() {
+    if (searchData === '') {
+      const response = await api.get('students');
+
+      setStudents(response.data);
+    } else {
+      const response = await api.get(`students?name=${searchData}`);
+
+      setStudents(response.data);
+    }
+  }
 
   async function remove(id) {
     await api.delete(`students/${id}`);
@@ -55,8 +68,14 @@ export default function Student() {
             CADASTRAR
           </Link>
           <SearchBox>
-            <MdSearch size={24} color="#999" />
-            <input type="text" placeholder="Buscar Aluno" />
+            <button type="button" onClick={() => handleSearch()}>
+              <MdSearch size={24} color="#999" />
+            </button>
+            <input
+              type="text"
+              placeholder="Buscar Aluno"
+              onChange={e => setSearchData(e.target.value)}
+            />
           </SearchBox>
         </Menu>
       </div>

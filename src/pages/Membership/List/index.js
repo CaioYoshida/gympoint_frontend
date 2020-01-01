@@ -25,7 +25,7 @@ export default function Membership() {
       setMemberships(data);
     }
     loadMemberships();
-  }, [memberships]);
+  }, []);
 
   async function remove(id) {
     await api.delete(`memberships/${id}`);
