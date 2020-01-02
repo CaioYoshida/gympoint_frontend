@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Form, Select, Input } from '@rocketseat/unform';
@@ -21,7 +22,7 @@ const schema = Yup.object().shape({
     .required('A data de início é obrigatório'),
 });
 
-export default function MembershipForm({ match }) {
+export default function EnrollmentForm({ match }) {
   const { id } = match.params;
 
   const [student_id, setStudent_id] = useState();
@@ -190,3 +191,11 @@ export default function MembershipForm({ match }) {
     </Wrapper>
   );
 }
+
+EnrollmentForm.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+};

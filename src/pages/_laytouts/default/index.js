@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Header from '~/components/Header/index';
 
@@ -12,3 +13,14 @@ export default function Default({ children }) {
     </Container>
   );
 }
+
+Default.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+};
+
+Default.defaultProps = {
+  children: null,
+};

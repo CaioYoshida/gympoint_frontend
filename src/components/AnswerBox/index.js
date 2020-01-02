@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 
 import { MdClose } from 'react-icons/md';
@@ -67,3 +68,8 @@ export default function AnswerBox({ handleCloseModal, helpOrderId }) {
     </Container>
   );
 }
+
+AnswerBox.propTypes = {
+  handleCloseModal: PropTypes.func.isRequired,
+  helpOrderId: PropTypes.string.isRequired,
+};
