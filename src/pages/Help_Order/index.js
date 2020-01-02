@@ -7,6 +7,8 @@ import AnswerBox from '~/components/AnswerBox';
 
 export default function Help_Order() {
   const [helpOrders, setHelpOrders] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [helpOrderId, setHelpOrderId] = useState(0);
 
   useEffect(() => {
     async function loadHelpOrders() {
@@ -17,8 +19,14 @@ export default function Help_Order() {
     loadHelpOrders();
   }, []);
 
-  async function handleAnswer() {
-    console.tron.log('Responder pergunta');
+  async function handleAnswer(id) {
+    setShowModal(true);
+
+    setHelpOrderId(id);
+  }
+
+  function closeModal() {
+    setShowModal(false);
   }
 
   return (
@@ -35,14 +43,16 @@ export default function Help_Order() {
           <tr>
             <td>{helpOrder.student.name}</td>
             <td className="answer">
-              <button type="button" onClick={() => handleAnswer()}>
+              <button type="button" onClick={() => handleAnswer(helpOrder.id)}>
                 responder
               </button>
             </td>
           </tr>
         ))}
       </List>
-      <AnswerBox />
+      {showModal ? (
+        <AnswerBox handleCloseModal={closeModal} helpOrderId={helpOrderId} />
+      ) : null}
     </Container>
   );
 }
